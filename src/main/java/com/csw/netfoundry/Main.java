@@ -9,27 +9,29 @@ import java.nio.channels.AsynchronousSocketChannel;
 
 public class Main {
 
-    public static final String ID_FILE = "/Users/victoria/Documents/csw_code/netfoundry/nf-node-sdk/signal-server.json";
+    public static final String ID_FILE = "/Users/victoria/Documents/csw_code/netfoundry/identity_files/java-service-identity.json";
 
     public static void connectAsClient() {
         System.out.println("INFO :: Connecting Java SDK as Client");
         Ziti.init(ID_FILE, "".toCharArray(), false);
     }
 
-    public static void connectAsServer() {
+    public static void connectAsServer(String serviceName) {
         System.out.println("INFO :: Connecting Java SDK as Server");
-        try {
-            ZitiContext context = Ziti.newContext(ID_FILE, "".toCharArray());
-            AsynchronousServerSocketChannel asC = context.openServer();
-            asC.bind(new ZitiAddress.Bind("service_name"));
-        } catch (IOException ioe) {
-            System.out.println("ERROR => Caught Exception: " + ioe);
+        while (true) {
+            try {
+                ZitiContext zContext = Ziti.newContext(ID_FILE, "".toCharArray());
+                AsynchronousServerSocketChannel asC = zContext.openServer();
+                asC.bind(new ZitiAddress.Bind(serviceName));
+            } catch (IOException ioe) {
+                System.out.println("ERROR => Caught Exception: " + ioe);
+            }
         }
-
     }
 
     public static void main(String[] args){
-        String service = args[0];
-        connectAsServer();
+//        String service = args[0];
+        String serviceName = "simple";
+        connectAsServer(serviceName);
     }
 }
