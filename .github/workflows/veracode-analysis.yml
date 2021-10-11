@@ -71,7 +71,7 @@ jobs:
         path: target/*.jar
     - uses: veracode/veracode-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
       with:
-        filepath: 'target/nf-java-sdk-server-1.0-SNAPSHOT.jar'
+        filepath: './target/nf-java-sdk-server-1.0-SNAPSHOT.jar'
         vid: '${{ secrets.VERACODE_API_ID }}'
         vkey: '${{ secrets.VERACODE_API_KEY }}'
         createsandbox: 'true'
