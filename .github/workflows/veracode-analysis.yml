@@ -68,7 +68,8 @@ jobs:
         java-version: '8'
     - uses: actions/upload-artifact@v2 # Copy files from repository to docker container so the next uploadandscan action can access them.
       with:
-        path: testjavasdk-veracode/target/*.jar
+        # think this flag is optional, but changing from *.jar to *.zip
+        path: target/*.zip
     - uses: veracode/veracode-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
       with:
         # csw - adding comment to alyssa's changes to test again
@@ -80,5 +81,6 @@ jobs:
         sandboxname: 'SANDBOXNAME'
         scantimeout: 15
         exclude: '*.js'
-        include: '*.jar'
+        # changing from *.jar to *.zip
+        include: '*.zip'
         criticality: 'VeryHigh'
