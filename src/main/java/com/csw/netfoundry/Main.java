@@ -12,9 +12,6 @@ import java.nio.channels.AsynchronousSocketChannel;
 public class Main {
 
     public static final String ID_FILE = "/Users/victoria/Documents/csw_code/netfoundry/identity_files/java-service-identity.json";
-    // Insert fake AWS credentials here to test git-secrets scanning
-    public static String aws_access_key_id = "FAKERKQUU5C2WX5FFAKE";
-    public static String aws_secret_access_key = "faketl1rIDgjnMP68Ljyawnpjgbq1vh8sNM1fake";
 
     public static void connectAsClient() {
         System.out.println("INFO :: Connecting Java SDK as Client");
