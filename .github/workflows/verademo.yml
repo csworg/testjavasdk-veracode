@@ -24,6 +24,7 @@ jobs:
       with: 
         java-version: 1.8
     
+    # pwd and ls -s
     - name: Print working directory
       run: echo "working directory $(pwd)"
     - name: Print directory contents
