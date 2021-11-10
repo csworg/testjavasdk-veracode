@@ -3,13 +3,11 @@
 name: Veracode Static Analysis Pipeline Scan
 
 on:
-  push:
-    branches: [ main ]
+#  push:
+#    branches: [ main ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ main ]
-  schedule:
-    - cron: '29 22 * * 0'
+    branches: [ main, test-branch ]
 
   veracode:
     runs-on: ubuntu-latest
